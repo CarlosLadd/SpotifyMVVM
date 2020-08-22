@@ -1,0 +1,90 @@
+PODS:
+  - Kingfisher (5.14.0):
+    - Kingfisher/Core (= 5.14.0)
+  - Kingfisher/Core (5.14.0)
+  - MaterialComponents/AnimationTiming (109.3.1)
+  - MaterialComponents/Availability (109.3.1)
+  - MaterialComponents/Buttons (109.3.1):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
+  - MaterialComponents/Elevation (109.3.1):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Ink (109.3.1):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Palettes (109.3.1)
+  - MaterialComponents/private/Application (109.3.1)
+  - MaterialComponents/private/Color (109.3.1):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/Math (109.3.1)
+  - MaterialComponents/Ripple (109.3.1):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/ShadowElevations (109.3.1)
+  - MaterialComponents/ShadowLayer (109.3.1):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/Shapes (109.3.1):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/TextFields (109.3.1):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Buttons
+    - MaterialComponents/Elevation
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/Typography (109.3.1):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Math
+  - MDFInternationalization (2.0.0)
+  - MDFTextAccessibility (2.0.0)
+  - Realm (5.0.0):
+    - Realm/Headers (= 5.0.0)
+  - Realm/Headers (5.0.0)
+  - RealmSwift (5.0.0):
+    - Realm (= 5.0.0)
+  - SkeletonView (1.8.7)
+
+DEPENDENCIES:
+  - Kingfisher
+  - MaterialComponents/TextFields
+  - RealmSwift
+  - SkeletonView
+
+SPEC REPOS:
+  trunk:
+    - Kingfisher
+    - MaterialComponents
+    - MDFInternationalization
+    - MDFTextAccessibility
+    - Realm
+    - RealmSwift
+    - SkeletonView
+
+SPEC CHECKSUMS:
+  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
+  MaterialComponents: 7675cd4b1c9f660b63cddeb725b2de853790402b
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
+  Realm: 76066d333de26f97e9caedaa85ee3ff4a62ca265
+  RealmSwift: c1bdff09b422569dc6881410d9ccf712bcdb79b0
+  SkeletonView: ba5370f41280b2f0a76918bb143c1294232bb4f4
+
+PODFILE CHECKSUM: 259974b6d54b61c1d5a4806770dc1f157c27bc90
+
+COCOAPODS: 1.9.3
