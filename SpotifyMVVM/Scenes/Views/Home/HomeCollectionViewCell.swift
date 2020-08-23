@@ -16,6 +16,11 @@ class HomeCollectionViewCell : UICollectionViewCell {
             categoryTitle.frame = CGRect(x: 0, y: 0, width: coverBox.bounds.width, height: coverBox.bounds.height)
             songTitle.frame = CGRect(x: 0, y: coverBox.frame.origin.y + coverBox.bounds.height, width: coverBox.bounds.width, height: Static.margin24x)
             singerName.frame = CGRect(x: 0, y: songTitle.frame.origin.y + songTitle.bounds.height, width: coverBox.bounds.width, height: Static.margin24x)
+            
+            songTitle.adjustsFontSizeToFitWidth = true
+            songTitle.minimumScaleFactor = 0.5
+            singerName.adjustsFontSizeToFitWidth = true
+            singerName.minimumScaleFactor = 0.5
         }
     }
     

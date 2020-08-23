@@ -9,6 +9,7 @@
 // MARK: - Home
 
 "homeHeaderTitle" = "Find your Favorite Music!";
+"homeSearchPlaceHolder" = "Search ...";
 "homeCategoriesBlockTitle" = "Categories";
 "homeTrendingBlockTitle" = "Trending";
 "homeSongsRecommendedTitle" = "Recommended Songs";

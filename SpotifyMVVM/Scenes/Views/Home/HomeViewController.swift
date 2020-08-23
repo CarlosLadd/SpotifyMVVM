@@ -90,6 +90,17 @@ class HomeViewController : BaseViewController {
         searchBox.backgroundColor = .white
         searchBox.layer.cornerRadius = Static.margin20x
         
+        let searchIcon = UIImageView(frame: CGRect(x: Static.margin16x, y: (searchBox.bounds.height / 2) - (Static.margin24x / 2), width: Static.margin24x, height: Static.margin24x))
+        searchIcon.image = #imageLiteral(resourceName: "icon-search")
+        searchIcon.image = searchIcon.image?.withRenderingMode(.alwaysTemplate)
+        searchIcon.tintColor = .lightGray
+        searchIcon.contentMode = .scaleAspectFit
+        
+        let searchPlaceHolder = UILabel(frame: CGRect(x: searchIcon.frame.origin.y + searchIcon.bounds.width + Static.margin16x, y: 0, width: searchBox.bounds.width - (searchIcon.frame.origin.y + searchIcon.bounds.width + Static.margin32x), height: searchBox.bounds.height))
+        searchPlaceHolder.font = UIFont.spFont(name: .regular, size: 16)
+        searchPlaceHolder.textColor = .lightGray
+        searchPlaceHolder.text = NSLocalizedString("homeSearchPlaceHolder", comment: "")
+        
         // Set Height
         headerView.frame.size.height = searchBox.frame.origin.y + searchBox.bounds.height + Static.margin24x
         headerHeightValue = headerView.frame.size.height
@@ -101,6 +112,9 @@ class HomeViewController : BaseViewController {
         headerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         
         // Render
+        searchBox.addSubview(searchIcon)
+        searchBox.addSubview(searchPlaceHolder)
+        
         headerView.addSubview(headerTitle)
         headerView.addSubview(searchBox)
         
