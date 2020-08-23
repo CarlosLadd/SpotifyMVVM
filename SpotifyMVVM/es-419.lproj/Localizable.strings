@@ -9,3 +9,6 @@
 // MARK: - Home
 
 "homeHeaderTitle" = "¡Encuentra tu Música Favorita!";
+"homeCategoriesBlockTitle" = "Categorías";
+"homeTrendingBlockTitle" = "Lo Más Escuchado";
+"homeSongsRecommendedTitle" = "Canciones Recomendadas";

@@ -23,15 +23,48 @@ class HomeViewController : BaseViewController {
     private var homeTableView: UITableView!
     private var homeCellRowId: String = "homeCellRowId"
     
+    // Data Sources
+    private var groupsObjects = [HomeGroupModel]()
+    private var categoriesArray = [CategoryModel]()
+    private var songsArray = [SongModel]()
+    private var recommendedArray = [SongModel]()
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
+        // Data only for test
+        renderDataForTest()
+        
         // UI
         renderHeaderView()
         renderHomeTableView()
+    }
+    
+    private func renderDataForTest() {
+        // Categories
+        categoriesArray.append(CategoryModel(coverURL: "", title: "Rock"))
+        categoriesArray.append(CategoryModel(coverURL: "", title: "Country"))
+        categoriesArray.append(CategoryModel(coverURL: "", title: "Jazz"))
+        categoriesArray.append(CategoryModel(coverURL: "", title: "Soul"))
+        categoriesArray.append(CategoryModel(coverURL: "", title: "Hip Hop"))
+        
+        // Songs
+        songsArray.append(SongModel(coverURL: "", name: "Sucker", singer: "Jonas Brothers"))
+        songsArray.append(SongModel(coverURL: "", name: "I Don't Car", singer: "Ed Sheeran & Bieber's"))
+        songsArray.append(SongModel(coverURL: "", name: "Old Town Road", singer: "Lil Nas"))
+        
+        // Recommended
+        recommendedArray.append(SongModel(coverURL: "", name: "Closer (feat. Halsey)", singer: "The Chainsmokers"))
+        recommendedArray.append(SongModel(coverURL: "", name: "7 Rings", singer: "Ariana Grande's"))
+        recommendedArray.append(SongModel(coverURL: "", name: "TAKI TAKI", singer: "Selena Gomez"))
+        
+        // Groups
+        groupsObjects.append(HomeGroupModel(groupName: NSLocalizedString("homeCategoriesBlockTitle", comment: ""), groupType: .categories, objects: categoriesArray))
+        groupsObjects.append(HomeGroupModel(groupName: NSLocalizedString("homeTrendingBlockTitle", comment: ""), groupType: .trending, objects: songsArray))
+        groupsObjects.append(HomeGroupModel(groupName: NSLocalizedString("homeSongsRecommendedTitle", comment: ""), groupType: .recommended, objects: recommendedArray))
     }
     
     // MARK: - UI
@@ -88,6 +121,14 @@ class HomeViewController : BaseViewController {
         homeTableView.estimatedRowHeight = 310.0
         homeTableView.estimatedSectionFooterHeight = 0.0
         homeTableView.estimatedSectionHeaderHeight = 0.0
+        
+        homeTableView.register(HomeTableViewCell.self, forCellReuseIdentifier: homeCellRowId)
+        homeTableView.contentInset = UIEdgeInsets(top: headerView.bounds.height - Static.hasTopNotch(),
+                                                  left: 0,
+                                                  bottom: 0,
+                                                  right: 0)
+        
+        self.view.addSubview(homeTableView)
     }
     
 }
@@ -97,20 +138,66 @@ class HomeViewController : BaseViewController {
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // offset_HeaderStop = headerHeightValue - Static.hasTopNotch()
-        return 326
+        let group = groupsObjects[indexPath.row]
+        
+        if group.groupType == .categories {
+            return 112 + Static.margin16x * 3
+        }
+        else if group.groupType == .trending {
+            return 112 + Static.margin32x + Static.margin24x * 2
+        }
+        else {
+            return Static.margin64x
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return groupsObjects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: homeCellRowId, for: indexPath as IndexPath) as! HomeTableViewCell
+        let group = groupsObjects[indexPath.row]
+        
+        cell.parentViewController = self
+        cell.homeGroup = group
+        cell.selectionStyle = .none
+        cell.backgroundColor = .clear
+        
+        return cell
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // Code
+        let offset_HeaderStop = headerHeightValue - Static.hasTopNotch()
+        let totalOffset = scrollView.contentOffset.y + headerView.bounds.height
+        
+        // Scale and Translate.
+        var headerTransform = CATransform3DIdentity
+        
+        if totalOffset < 0 {
+            let headerScaleFactor:CGFloat = -(totalOffset) / headerView.bounds.height
+            
+            let headerSizevariation = ((headerView.bounds.height * (1.0 + headerScaleFactor)) - headerView.bounds.height) / 2
+            headerTransform = CATransform3DTranslate(headerTransform, 0, headerSizevariation, 0)
+            headerTransform = CATransform3DScale(headerTransform, 1.0 + headerScaleFactor, 1.0 + headerScaleFactor, 0)
+        }
+        else {
+            headerTransform = CATransform3DTranslate(headerTransform, 0, max(-offset_HeaderStop, -totalOffset), 0)
+        }
+        
+        let transparencyValue: CGFloat = 1 - (totalOffset / offset_HeaderStop);
+        let solidValue: CGFloat = totalOffset / offset_HeaderStop;
+        
+        if solidValue >= 1.0 {
+            activeStatusBarStyle = .default
+        }
+        else {
+            activeStatusBarStyle = .lightContent
+        }
+        
+        headerView.layer.transform = headerTransform
+        headerView.alpha = transparencyValue
+        setNeedsStatusBarAppearanceUpdate()
     }
     
 }
