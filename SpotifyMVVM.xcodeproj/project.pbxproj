@@ -19,6 +19,18 @@
 		8627381F24F1A440007553FA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627381E24F1A440007553FA /* BaseViewController.swift */; };
 		8627382124F1A4AD007553FA /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627382024F1A4AD007553FA /* BaseNavigationController.swift */; };
 		8627382424F1A54D007553FA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627382324F1A54D007553FA /* HomeViewController.swift */; };
+		8627382724F1A9A8007553FA /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627382624F1A9A8007553FA /* UIColor+Extension.swift */; };
+		8627382924F1AA98007553FA /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627382824F1AA98007553FA /* UIFont+Extension.swift */; };
+		8627382E24F1ACDB007553FA /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8627382A24F1ACDB007553FA /* SourceSansPro-Light.ttf */; };
+		8627382F24F1ACDB007553FA /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8627382B24F1ACDB007553FA /* SourceSansPro-SemiBold.ttf */; };
+		8627383024F1ACDB007553FA /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8627382C24F1ACDB007553FA /* SourceSansPro-Regular.ttf */; };
+		8627383124F1ACDB007553FA /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8627382D24F1ACDB007553FA /* SourceSansPro-Bold.ttf */; };
+		8627383424F1B005007553FA /* Static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627383324F1B005007553FA /* Static.swift */; };
+		86348EA324F2BEA70073A4DE /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86348EA224F2BEA70073A4DE /* HomeTableViewCell.swift */; };
+		86348EA624F2C4A90073A4DE /* HomeGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86348EA524F2C4A90073A4DE /* HomeGroupModel.swift */; };
+		86348EA824F2C5BE0073A4DE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86348EA724F2C5BE0073A4DE /* CategoryModel.swift */; };
+		86348EAA24F2C63F0073A4DE /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86348EA924F2C63F0073A4DE /* SongModel.swift */; };
+		86E5D62324F1E0C700434580 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86E5D62524F1E0C700434580 /* Localizable.strings */; };
 		89918F060FE77C2861DC3899 /* Pods_SpotifyMVVMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFAC4654184341CBC037FE3 /* Pods_SpotifyMVVMTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +72,20 @@
 		8627381E24F1A440007553FA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		8627382024F1A4AD007553FA /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		8627382324F1A54D007553FA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8627382624F1A9A8007553FA /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		8627382824F1AA98007553FA /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		8627382A24F1ACDB007553FA /* SourceSansPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.ttf"; sourceTree = "<group>"; };
+		8627382B24F1ACDB007553FA /* SourceSansPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-SemiBold.ttf"; sourceTree = "<group>"; };
+		8627382C24F1ACDB007553FA /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
+		8627382D24F1ACDB007553FA /* SourceSansPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.ttf"; sourceTree = "<group>"; };
+		8627383324F1B005007553FA /* Static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Static.swift; sourceTree = "<group>"; };
+		86348EA224F2BEA70073A4DE /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		86348EA524F2C4A90073A4DE /* HomeGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGroupModel.swift; sourceTree = "<group>"; };
+		86348EA724F2C5BE0073A4DE /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		86348EA924F2C63F0073A4DE /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
+		86E5D62424F1E0C700434580 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		86E5D62624F1E0D600434580 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		86E5D62724F1E0D700434580 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		CFFAC4654184341CBC037FE3 /* Pods_SpotifyMVVMTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotifyMVVMTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1812E38A6CD7B4C835062B9 /* Pods-SpotifyMVVMTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyMVVMTests.release.xcconfig"; path = "Target Support Files/Pods-SpotifyMVVMTests/Pods-SpotifyMVVMTests.release.xcconfig"; sourceTree = "<group>"; };
 		E269FA5A3EF4A1207C2FFEB7 /* Pods-SpotifyMVVM-SpotifyMVVMUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyMVVM-SpotifyMVVMUITests.debug.xcconfig"; path = "Target Support Files/Pods-SpotifyMVVM-SpotifyMVVMUITests/Pods-SpotifyMVVM-SpotifyMVVMUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				8627381724F1A390007553FA /* Scenes */,
+				8627383224F1AEE3007553FA /* Static */,
 				8627381824F1A390007553FA /* Utils */,
 				8627381524F1A390007553FA /* Resources */,
 				862737E524F19D78007553FA /* AppDelegate.swift */,
@@ -151,6 +178,7 @@
 				862737EE24F19D7B007553FA /* Assets.xcassets */,
 				862737F024F19D7B007553FA /* LaunchScreen.storyboard */,
 				862737F324F19D7B007553FA /* Info.plist */,
+				86E5D62524F1E0C700434580 /* Localizable.strings */,
 			);
 			path = SpotifyMVVM;
 			sourceTree = "<group>";
@@ -184,6 +212,10 @@
 		8627381624F1A390007553FA /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				8627382D24F1ACDB007553FA /* SourceSansPro-Bold.ttf */,
+				8627382A24F1ACDB007553FA /* SourceSansPro-Light.ttf */,
+				8627382C24F1ACDB007553FA /* SourceSansPro-Regular.ttf */,
+				8627382B24F1ACDB007553FA /* SourceSansPro-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -194,6 +226,7 @@
 				8627381924F1A40C007553FA /* ViewComponents */,
 				8627381A24F1A40C007553FA /* ViewModels */,
 				8627381B24F1A40C007553FA /* Views */,
+				86348EA424F2C4570073A4DE /* Entities */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -201,6 +234,7 @@
 		8627381824F1A390007553FA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8627382524F1A98E007553FA /* Extensions */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -234,8 +268,36 @@
 			isa = PBXGroup;
 			children = (
 				8627382324F1A54D007553FA /* HomeViewController.swift */,
+				86348EA224F2BEA70073A4DE /* HomeTableViewCell.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		8627382524F1A98E007553FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8627382624F1A9A8007553FA /* UIColor+Extension.swift */,
+				8627382824F1AA98007553FA /* UIFont+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8627383224F1AEE3007553FA /* Static */ = {
+			isa = PBXGroup;
+			children = (
+				8627383324F1B005007553FA /* Static.swift */,
+			);
+			path = Static;
+			sourceTree = "<group>";
+		};
+		86348EA424F2C4570073A4DE /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				86348EA524F2C4A90073A4DE /* HomeGroupModel.swift */,
+				86348EA724F2C5BE0073A4DE /* CategoryModel.swift */,
+				86348EA924F2C63F0073A4DE /* SongModel.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +391,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"es-419",
 			);
 			mainGroup = 862737D924F19D78007553FA;
 			productRefGroup = 862737E324F19D78007553FA /* Products */;
@@ -349,7 +412,12 @@
 			files = (
 				862737F224F19D7B007553FA /* LaunchScreen.storyboard in Resources */,
 				8627381D24F1A41E007553FA /* Base.storyboard in Resources */,
+				8627382F24F1ACDB007553FA /* SourceSansPro-SemiBold.ttf in Resources */,
 				862737EF24F19D7B007553FA /* Assets.xcassets in Resources */,
+				8627382E24F1ACDB007553FA /* SourceSansPro-Light.ttf in Resources */,
+				86E5D62324F1E0C700434580 /* Localizable.strings in Resources */,
+				8627383124F1ACDB007553FA /* SourceSansPro-Bold.ttf in Resources */,
+				8627383024F1ACDB007553FA /* SourceSansPro-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,11 +545,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8627382924F1AA98007553FA /* UIFont+Extension.swift in Sources */,
 				8627382424F1A54D007553FA /* HomeViewController.swift in Sources */,
+				86348EA624F2C4A90073A4DE /* HomeGroupModel.swift in Sources */,
 				8627382124F1A4AD007553FA /* BaseNavigationController.swift in Sources */,
 				862737E624F19D78007553FA /* AppDelegate.swift in Sources */,
+				8627382724F1A9A8007553FA /* UIColor+Extension.swift in Sources */,
+				86348EAA24F2C63F0073A4DE /* SongModel.swift in Sources */,
 				862737E824F19D78007553FA /* SceneDelegate.swift in Sources */,
+				86348EA824F2C5BE0073A4DE /* CategoryModel.swift in Sources */,
+				86348EA324F2BEA70073A4DE /* HomeTableViewCell.swift in Sources */,
 				8627381F24F1A440007553FA /* BaseViewController.swift in Sources */,
+				8627383424F1B005007553FA /* Static.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,8 +596,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				862737F124F19D7B007553FA /* Base */,
+				86E5D62624F1E0D600434580 /* es-419 */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		86E5D62524F1E0C700434580 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				86E5D62424F1E0C700434580 /* en */,
+				86E5D62724F1E0D700434580 /* es-419 */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -532,6 +617,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -592,6 +678,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

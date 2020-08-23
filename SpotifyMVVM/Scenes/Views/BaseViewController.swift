@@ -10,6 +10,14 @@ import UIKit
 
 class BaseViewController : UIViewController {
     
+    open var activeStatusBarStyle: UIStatusBarStyle = .lightContent
+    
+    // MARK: - Status Bar
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return activeStatusBarStyle
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
