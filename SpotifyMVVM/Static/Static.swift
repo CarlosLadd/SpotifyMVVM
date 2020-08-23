@@ -23,6 +23,7 @@ open class Static : NSObject {
     static let margin32x: CGFloat = 32.0
     static let margin44x: CGFloat = 44.0
     static let margin64x: CGFloat = 64.0
+    static let margin112x: CGFloat = 112.0
     
     // MARK: - Life Cycle
     

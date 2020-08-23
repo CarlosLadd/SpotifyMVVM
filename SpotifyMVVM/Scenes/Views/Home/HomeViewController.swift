@@ -75,7 +75,7 @@ class HomeViewController : BaseViewController {
         /// Main Title
         
         let headerTitle = UILabel(frame: CGRect(x: Static.margin20x, y: Static.hasTopNotch() + Static.margin16x, width: headerView.bounds.width / 2, height: 0.0))
-        headerTitle.font = UIFont.spFont(name: .bold, size: 24)
+        headerTitle.font = UIFont.spFont(name: .bold, size: Static.margin24x)
         headerTitle.textAlignment = .left
         headerTitle.textColor = .white
         headerTitle.text = NSLocalizedString("homeHeaderTitle", comment: "")
@@ -88,7 +88,7 @@ class HomeViewController : BaseViewController {
         
         let searchBox = UIView(frame: CGRect(x: Static.margin20x, y: headerTitle.frame.origin.y + headerTitle.bounds.height + Static.margin16x, width: headerView.bounds.width - (Static.margin20x * 2), height: Static.margin44x))
         searchBox.backgroundColor = .white
-        searchBox.layer.cornerRadius = 20.0
+        searchBox.layer.cornerRadius = Static.margin20x
         
         // Set Height
         headerView.frame.size.height = searchBox.frame.origin.y + searchBox.bounds.height + Static.margin24x
@@ -141,10 +141,10 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         let group = groupsObjects[indexPath.row]
         
         if group.groupType == .categories {
-            return 112 + Static.margin16x * 3
+            return Static.margin112x + Static.margin32x + Static.margin16x
         }
         else if group.groupType == .trending {
-            return 112 + Static.margin32x + Static.margin24x * 2
+            return Static.margin112x + Static.margin32x + Static.margin24x * 2
         }
         else {
             return Static.margin64x
