@@ -23,6 +23,7 @@ open class Static : NSObject {
     static let margin32x: CGFloat = 32.0
     static let margin44x: CGFloat = 44.0
     static let margin64x: CGFloat = 64.0
+    static let margin80x: CGFloat = 80.0
     static let margin112x: CGFloat = 112.0
     
     // MARK: - Life Cycle
@@ -53,6 +54,23 @@ open class Static : NSObject {
         label.sizeToFit()
         
         return label.frame.height
+    }
+    
+    // MARK: - Check Navigation Stack
+    
+    func checkAfterPushViewController(vc: BaseViewController, classOf: AnyClass, weakSelf: UIViewController) {
+        var vccounter = 0;
+        
+        for focusvc in weakSelf.navigationController?.viewControllers ?? [] {
+            if focusvc.isKind(of: classOf.self) {
+                weakSelf.navigationController?.viewControllers.remove(at: vccounter)
+                break;
+            }
+            
+            vccounter += 1
+        }
+        
+        weakSelf.navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - Safe Area Margins

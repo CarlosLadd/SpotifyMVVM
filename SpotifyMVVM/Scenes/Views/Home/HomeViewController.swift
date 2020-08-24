@@ -148,6 +148,12 @@ class HomeViewController : BaseViewController {
         self.view.addSubview(homeTableView)
     }
     
+    // MARK: - Show Artist Profile
+    
+    func renderArtistProfile() {
+        Static.shared.checkAfterPushViewController(vc: ArtistProfileViewController(), classOf: ArtistProfileViewController.self, weakSelf: self)
+    }
+    
 }
 
 // MARK: - Home TableView Delegate

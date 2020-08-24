@@ -159,4 +159,12 @@ extension HomeTableViewCell : UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if activeGroupType == .trending || activeGroupType == .recommended {
+            let homeViewController = parentViewController as! HomeViewController
+            
+            homeViewController.renderArtistProfile()
+        }
+    }
+    
 }
