@@ -137,7 +137,7 @@ class HomeViewController : BaseViewController {
         homeTableView.rowHeight = UITableView.automaticDimension
         homeTableView.estimatedSectionFooterHeight = 0.0
         homeTableView.estimatedSectionHeaderHeight = 0.0
-        homeTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Static.hasBottomArea()))
+        homeTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Static.hasBottomArea() + Static.margin44x))
         
         homeTableView.register(HomeTableViewCell.self, forCellReuseIdentifier: homeCellRowId)
         homeTableView.contentInset = UIEdgeInsets(top: headerView.bounds.height - Static.hasTopNotch(),
