@@ -14,16 +14,31 @@ class HomeTableViewCell : UITableViewCell {
     
     var homeGroup : HomeGroupModel? {
         didSet {
+            // Fix safe area width
+            let ws: CGFloat = UIScreen.main.bounds.size.width
+            var heightBox: CGFloat = 0.0
+            
             groupNameLab.text = homeGroup?.groupName
             sourceArray = homeGroup?.objects
             activeGroupType = homeGroup?.groupType
             
             if activeGroupType == .recommended {
-                collectionView.isHidden = true
+                collectionViewLayout.scrollDirection = .vertical
+                let countObjects = homeGroup?.objects.count ?? 0
+                heightBox = CGFloat(countObjects) * Static.margin64x
+            }
+            else if activeGroupType == .categories {
+                collectionViewLayout.scrollDirection = .horizontal
+                heightBox = Static.margin112x + Static.margin32x + Static.margin16x
             }
             else {
-                collectionView.isHidden = false
+                heightBox = Static.margin112x + Static.margin24x * 2
             }
+            
+            groupBox.frame = CGRect(x: 0, y: 0, width: ws, height: heightBox)
+            groupNameLab.frame = CGRect(x: Static.margin16x, y: 0, width: groupBox.bounds.width - Static.margin32x, height: Static.margin32x)
+            
+            collectionView.frame = CGRect(x: 0, y: groupNameLab.frame.origin.y + groupNameLab.bounds.height, width: groupBox.bounds.width, height: groupBox.bounds.height)
         }
     }
     
@@ -53,12 +68,13 @@ class HomeTableViewCell : UITableViewCell {
         cv.minimumLineSpacing = 0
         cv.minimumInteritemSpacing = 0
         cv.scrollDirection = .horizontal
+        cv.estimatedItemSize = CGSize(width: 1, height: 1)
         return cv
     }()
     
     public let collectionViewRowId: String = "homeGroupRowId"
     
-    open var collectionView: UICollectionView!
+    open var collectionView: VerticalCollectionView!
     
     // Sources
     public var sourceArray: [Any]?
@@ -67,15 +83,9 @@ class HomeTableViewCell : UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        let ws: CGFloat = UIScreen.main.bounds.size.width
-        
-        // FIXME: Waiting for dynamic height
-        groupBox.frame = CGRect(x: 0, y: 0, width: ws, height: Static.margin112x + Static.margin32x + Static.margin24x * 2)
-        
-        groupNameLab.frame = CGRect(x: Static.margin16x, y: 0, width: groupBox.bounds.width - Static.margin32x, height: Static.margin32x)
         
         // Collection View
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: groupNameLab.frame.origin.y + groupNameLab.bounds.height, width: groupBox.bounds.width, height: groupBox.bounds.height - groupNameLab.bounds.height), collectionViewLayout: collectionViewLayout)
+        collectionView = VerticalCollectionView(frame: CGRect(x: 0, y: groupNameLab.frame.origin.y + groupNameLab.bounds.height, width: groupBox.bounds.width, height: groupBox.bounds.height - groupNameLab.bounds.height), collectionViewLayout: collectionViewLayout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = false
@@ -122,21 +132,30 @@ extension HomeTableViewCell : UICollectionViewDelegate, UICollectionViewDataSour
             let category = sourceArray?[indexPath.row] as! CategoryModel
             cell.category = category
         }
-        
-        if activeGroupType == .trending {
+        else if activeGroupType == .trending {
             let trending = sourceArray?[indexPath.row] as! SongModel
             cell.trending = trending
+        }
+        else {
+            cell.originRect = CGSize(width: UIScreen.main.bounds.size.width, height: Static.margin64x)
+            let recommended = sourceArray?[indexPath.row] as! SongModel
+            cell.recommended = recommended
         }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let ws: CGFloat = UIScreen.main.bounds.size.width
+        
         if activeGroupType == .categories {
             return CGSize(width: Static.margin112x + Static.margin16x, height: collectionView.frame.height)
         }
-        else {
+        else if activeGroupType == .trending {
             return CGSize(width: Static.margin112x + Static.margin16x, height: Static.margin112x + Static.margin24x * 2)
+        }
+        else {
+            return CGSize(width: ws - Static.margin16x, height: Static.margin64x)
         }
     }
     

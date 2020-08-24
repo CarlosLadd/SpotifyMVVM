@@ -60,6 +60,7 @@ class HomeViewController : BaseViewController {
         recommendedArray.append(SongModel(coverURL: "", name: "Closer (feat. Halsey)", singer: "The Chainsmokers"))
         recommendedArray.append(SongModel(coverURL: "", name: "7 Rings", singer: "Ariana Grande's"))
         recommendedArray.append(SongModel(coverURL: "", name: "TAKI TAKI", singer: "Selena Gomez"))
+        recommendedArray.append(SongModel(coverURL: "", name: "Original Love", singer: "U2"))
         
         // Groups
         groupsObjects.append(HomeGroupModel(groupName: NSLocalizedString("homeCategoriesBlockTitle", comment: ""), groupType: .categories, objects: categoriesArray))
@@ -132,9 +133,11 @@ class HomeViewController : BaseViewController {
         homeTableView.delegate = self
         homeTableView.dataSource = self
         homeTableView.showsVerticalScrollIndicator = false
-        homeTableView.estimatedRowHeight = 310.0
+        homeTableView.estimatedRowHeight = 100.0
+        homeTableView.rowHeight = UITableView.automaticDimension
         homeTableView.estimatedSectionFooterHeight = 0.0
         homeTableView.estimatedSectionHeaderHeight = 0.0
+        homeTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Static.hasBottomArea()))
         
         homeTableView.register(HomeTableViewCell.self, forCellReuseIdentifier: homeCellRowId)
         homeTableView.contentInset = UIEdgeInsets(top: headerView.bounds.height - Static.hasTopNotch(),
@@ -161,7 +164,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
             return Static.margin112x + Static.margin32x + Static.margin24x * 2
         }
         else {
-            return Static.margin64x
+            return CGFloat(group.objects.count) * Static.margin64x
         }
     }
     

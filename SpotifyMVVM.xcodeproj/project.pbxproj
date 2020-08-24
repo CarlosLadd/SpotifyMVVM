@@ -31,6 +31,7 @@
 		86348EA824F2C5BE0073A4DE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86348EA724F2C5BE0073A4DE /* CategoryModel.swift */; };
 		86348EAA24F2C63F0073A4DE /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86348EA924F2C63F0073A4DE /* SongModel.swift */; };
 		86348EAC24F2D91C0073A4DE /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86348EAB24F2D91C0073A4DE /* HomeCollectionViewCell.swift */; };
+		86348EAE24F334BD0073A4DE /* VerticalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86348EAD24F334BD0073A4DE /* VerticalCollectionView.swift */; };
 		86E5D62324F1E0C700434580 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86E5D62524F1E0C700434580 /* Localizable.strings */; };
 		89918F060FE77C2861DC3899 /* Pods_SpotifyMVVMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFAC4654184341CBC037FE3 /* Pods_SpotifyMVVMTests.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		86348EA724F2C5BE0073A4DE /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		86348EA924F2C63F0073A4DE /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		86348EAB24F2D91C0073A4DE /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		86348EAD24F334BD0073A4DE /* VerticalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionView.swift; sourceTree = "<group>"; };
 		86E5D62424F1E0C700434580 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		86E5D62624F1E0D600434580 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		86E5D62724F1E0D700434580 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 		8627381924F1A40C007553FA /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				86348EAD24F334BD0073A4DE /* VerticalCollectionView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				86348EA824F2C5BE0073A4DE /* CategoryModel.swift in Sources */,
 				86348EA324F2BEA70073A4DE /* HomeTableViewCell.swift in Sources */,
 				8627381F24F1A440007553FA /* BaseViewController.swift in Sources */,
+				86348EAE24F334BD0073A4DE /* VerticalCollectionView.swift in Sources */,
 				8627383424F1B005007553FA /* Static.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

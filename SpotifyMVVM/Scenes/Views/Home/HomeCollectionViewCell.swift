@@ -27,6 +27,8 @@ class HomeCollectionViewCell : UICollectionViewCell {
     var category: CategoryModel? {
         didSet {
             categoryTitle.text = category?.title
+            
+            addSubview(categoryTitle)
         }
     }
     
@@ -34,6 +36,23 @@ class HomeCollectionViewCell : UICollectionViewCell {
         didSet {
             songTitle.text = trending?.name
             singerName.text = trending?.singer
+            
+            addSubview(songTitle)
+            addSubview(singerName)
+        }
+    }
+    
+    var recommended: SongModel? {
+        didSet {
+            coverBox.frame = CGRect(x: 0, y: (Static.margin64x / 2) - (Static.margin44x / 2), width: Static.margin44x, height: Static.margin44x)
+            songTitle.frame = CGRect(x: coverBox.frame.origin.x + coverBox.bounds.width + Static.margin16x, y: Static.margin10x, width: originRect.width - (coverBox.frame.origin.x + coverBox.bounds.width + Static.margin32x), height: Static.margin44x / 2)
+            singerName.frame = CGRect(x: songTitle.frame.origin.x, y: songTitle.frame.origin.y + songTitle.bounds.height, width: songTitle.bounds.width, height: songTitle.bounds.height)
+            
+            songTitle.text = recommended?.name
+            singerName.text = recommended?.singer
+            
+            addSubview(songTitle)
+            addSubview(singerName)
         }
     }
     
@@ -76,9 +95,6 @@ class HomeCollectionViewCell : UICollectionViewCell {
         super.init(frame: frame)
         
         addSubview(coverBox)
-        addSubview(categoryTitle)
-        addSubview(songTitle)
-        addSubview(singerName)
     }
     
     required init?(coder: NSCoder) {
