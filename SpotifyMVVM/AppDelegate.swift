@@ -12,6 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window : UIWindow?
+    
+    lazy var loginViewController = LoginViewController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -19,14 +21,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Use UISceneDelegate
         }
         else {
-            self.window = UIWindow(frame: UIScreen.main.bounds)
             let storyboard = UIStoryboard(name: "Base", bundle: nil)
             let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
+            navigationController.viewControllers = [loginViewController]
+            
+            self.window = UIWindow(frame: UIScreen.main.bounds)
             self.window?.rootViewController = navigationController
             self.window?.makeKeyAndVisible()
         }
         
         return true
+    }
+    
+    // MARK: - URL Handler
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        loginViewController.sessionManager.application(app, open: url, options: options)
+        return true
+    }
+    
+    // MARK: - States
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        if (loginViewController.appRemote.isConnected) {
+            loginViewController.appRemote.disconnect()
+        }
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        if let _ = loginViewController.appRemote.connectionParameters.accessToken {
+            loginViewController.appRemote.connect()
+        }
     }
 
     // MARK: UISceneSession Lifecycle

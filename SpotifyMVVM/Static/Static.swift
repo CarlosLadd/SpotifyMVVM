@@ -26,6 +26,11 @@ open class Static : NSObject {
     static let margin80x: CGFloat = 80.0
     static let margin112x: CGFloat = 112.0
     
+    // Spotify Auth
+    static let SpotifyBaseURLToken = "http://0.0.0.0"
+    static let SpotifyClientID = "ab7c389908b14653b77a47ca8c82cad6"
+    static let SpotifyRedirectURI = URL(string: "spotify-login-sdk-test-app://spotify-login-callback")!
+    
     // MARK: - Life Cycle
     
     private override init() {

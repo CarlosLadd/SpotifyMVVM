@@ -13,3 +13,7 @@
 "homeCategoriesBlockTitle" = "Categorías";
 "homeTrendingBlockTitle" = "Lo Más Escuchado";
 "homeSongsRecommendedTitle" = "Canciones Recomendadas";
+
+// MARK: - Login
+
+"loginButtonTitle" = "Iniciar sesión con Spotify";

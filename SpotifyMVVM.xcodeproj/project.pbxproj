@@ -32,6 +32,9 @@
 		86348EAA24F2C63F0073A4DE /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86348EA924F2C63F0073A4DE /* SongModel.swift */; };
 		86348EAC24F2D91C0073A4DE /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86348EAB24F2D91C0073A4DE /* HomeCollectionViewCell.swift */; };
 		86348EAE24F334BD0073A4DE /* VerticalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86348EAD24F334BD0073A4DE /* VerticalCollectionView.swift */; };
+		863D0CF224F7262D00D9855F /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 863D0CF124F7262D00D9855F /* SpotifyiOS.framework */; };
+		863D0CF824F7291400D9855F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863D0CF724F7291400D9855F /* LoginViewController.swift */; };
+		863D0CFA24F72E2C00D9855F /* SpotifyLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863D0CF924F72E2C00D9855F /* SpotifyLoginButton.swift */; };
 		864F2A0D24F3F8D100D00E68 /* ArtistProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864F2A0C24F3F8D100D00E68 /* ArtistProfileViewController.swift */; };
 		86E5D62324F1E0C700434580 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86E5D62524F1E0C700434580 /* Localizable.strings */; };
 		89918F060FE77C2861DC3899 /* Pods_SpotifyMVVMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFAC4654184341CBC037FE3 /* Pods_SpotifyMVVMTests.framework */; };
@@ -88,6 +91,10 @@
 		86348EA924F2C63F0073A4DE /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		86348EAB24F2D91C0073A4DE /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		86348EAD24F334BD0073A4DE /* VerticalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionView.swift; sourceTree = "<group>"; };
+		863D0CF124F7262D00D9855F /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = Frameworks/SpotifyiOS.framework; sourceTree = "<group>"; };
+		863D0CF524F727C900D9855F /* SpotifyMVVM-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpotifyMVVM-Bridge.h"; sourceTree = "<group>"; };
+		863D0CF724F7291400D9855F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		863D0CF924F72E2C00D9855F /* SpotifyLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyLoginButton.swift; sourceTree = "<group>"; };
 		864F2A0C24F3F8D100D00E68 /* ArtistProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistProfileViewController.swift; sourceTree = "<group>"; };
 		86E5D62424F1E0C700434580 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		86E5D62624F1E0D600434580 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -105,6 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				411D90FC98A5ED6D48DFA040 /* Pods_SpotifyMVVM.framework in Frameworks */,
+				863D0CF224F7262D00D9855F /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +151,7 @@
 		1A51E2C9E6DC4A71F9005C81 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				863D0CF124F7262D00D9855F /* SpotifyiOS.framework */,
 				E648B91B101CAB2BDFE14147 /* Pods_SpotifyMVVM.framework */,
 				08B6B57D15423129FCA08BE4 /* Pods_SpotifyMVVM_SpotifyMVVMUITests.framework */,
 				CFFAC4654184341CBC037FE3 /* Pods_SpotifyMVVMTests.framework */,
@@ -185,6 +194,7 @@
 				862737F024F19D7B007553FA /* LaunchScreen.storyboard */,
 				862737F324F19D7B007553FA /* Info.plist */,
 				86E5D62524F1E0C700434580 /* Localizable.strings */,
+				863D0CF524F727C900D9855F /* SpotifyMVVM-Bridge.h */,
 			);
 			path = SpotifyMVVM;
 			sourceTree = "<group>";
@@ -249,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				86348EAD24F334BD0073A4DE /* VerticalCollectionView.swift */,
+				863D0CF924F72E2C00D9855F /* SpotifyLoginButton.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -266,6 +277,7 @@
 				8627381C24F1A41E007553FA /* Base.storyboard */,
 				8627381E24F1A440007553FA /* BaseViewController.swift */,
 				8627382024F1A4AD007553FA /* BaseNavigationController.swift */,
+				863D0CF624F728FE00D9855F /* Login */,
 				8627382224F1A516007553FA /* Home */,
 				864F2A0B24F3F8B600D00E68 /* Artist */,
 			);
@@ -307,6 +319,14 @@
 				86348EA924F2C63F0073A4DE /* SongModel.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		863D0CF624F728FE00D9855F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				863D0CF724F7291400D9855F /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		864F2A0B24F3F8B600D00E68 /* Artist */ = {
@@ -564,6 +584,7 @@
 			files = (
 				8627382924F1AA98007553FA /* UIFont+Extension.swift in Sources */,
 				8627382424F1A54D007553FA /* HomeViewController.swift in Sources */,
+				863D0CFA24F72E2C00D9855F /* SpotifyLoginButton.swift in Sources */,
 				86348EA624F2C4A90073A4DE /* HomeGroupModel.swift in Sources */,
 				8627382124F1A4AD007553FA /* BaseNavigationController.swift in Sources */,
 				862737E624F19D78007553FA /* AppDelegate.swift in Sources */,
@@ -574,6 +595,7 @@
 				86348EA824F2C5BE0073A4DE /* CategoryModel.swift in Sources */,
 				86348EA324F2BEA70073A4DE /* HomeTableViewCell.swift in Sources */,
 				8627381F24F1A440007553FA /* BaseViewController.swift in Sources */,
+				863D0CF824F7291400D9855F /* LoginViewController.swift in Sources */,
 				864F2A0D24F3F8D100D00E68 /* ArtistProfileViewController.swift in Sources */,
 				86348EAE24F334BD0073A4DE /* VerticalCollectionView.swift in Sources */,
 				8627383424F1B005007553FA /* Static.swift in Sources */,
@@ -755,6 +777,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7DN9Q8YVFN;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = SpotifyMVVM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -763,6 +790,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carlosladd.SpotifyMVVM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyMVVM/SpotifyMVVM-Bridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -774,6 +802,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7DN9Q8YVFN;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = SpotifyMVVM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -782,6 +815,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carlosladd.SpotifyMVVM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyMVVM/SpotifyMVVM-Bridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

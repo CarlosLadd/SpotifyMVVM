@@ -19,9 +19,6 @@ class BaseNavigationController : UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Rendering Views
-        self.viewControllers = [HomeViewController()]
     }
     
 }

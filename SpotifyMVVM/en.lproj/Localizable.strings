@@ -13,3 +13,7 @@
 "homeCategoriesBlockTitle" = "Categories";
 "homeTrendingBlockTitle" = "Trending";
 "homeSongsRecommendedTitle" = "Recommended Songs";
+
+// MARK: - Login
+
+"loginButtonTitle" = "Login with Spotify";
