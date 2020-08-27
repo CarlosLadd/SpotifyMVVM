@@ -121,7 +121,7 @@ class LoginViewController : BaseViewController {
 extension LoginViewController : SPTSessionManagerDelegate {
     
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
-        presentAlertController(title: "Authorization Failed", message: error.localizedDescription, buttonTitle: "Bummer")
+        presentAlertController(title: "Authorization Failed", message: error.localizedDescription, buttonTitle: "Dismiss")
     }
 
     func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
