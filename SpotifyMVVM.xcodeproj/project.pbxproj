@@ -184,17 +184,14 @@
 		862737E424F19D78007553FA /* SpotifyMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				86AC768324FAB2CF009E59ED /* Storyboards */,
 				8627381724F1A390007553FA /* Scenes */,
 				8627383224F1AEE3007553FA /* Static */,
 				8627381824F1A390007553FA /* Utils */,
 				8627381524F1A390007553FA /* Resources */,
-				862737E524F19D78007553FA /* AppDelegate.swift */,
-				862737E724F19D78007553FA /* SceneDelegate.swift */,
+				86AC768224FAB25E009E59ED /* Supporting Files */,
 				862737EE24F19D7B007553FA /* Assets.xcassets */,
-				862737F024F19D7B007553FA /* LaunchScreen.storyboard */,
-				862737F324F19D7B007553FA /* Info.plist */,
 				86E5D62524F1E0C700434580 /* Localizable.strings */,
-				863D0CF524F727C900D9855F /* SpotifyMVVM-Bridge.h */,
 			);
 			path = SpotifyMVVM;
 			sourceTree = "<group>";
@@ -258,8 +255,9 @@
 		8627381924F1A40C007553FA /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
-				86348EAD24F334BD0073A4DE /* VerticalCollectionView.swift */,
-				863D0CF924F72E2C00D9855F /* SpotifyLoginButton.swift */,
+				86AC768124FAB219009E59ED /* Buttons */,
+				86AC767F24FAB1FA009E59ED /* CustomViews */,
+				86AC768024FAB1FA009E59ED /* Layouts */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -274,7 +272,6 @@
 		8627381B24F1A40C007553FA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8627381C24F1A41E007553FA /* Base.storyboard */,
 				8627381E24F1A440007553FA /* BaseViewController.swift */,
 				8627382024F1A4AD007553FA /* BaseNavigationController.swift */,
 				863D0CF624F728FE00D9855F /* Login */,
@@ -335,6 +332,49 @@
 				864F2A0C24F3F8D100D00E68 /* ArtistProfileViewController.swift */,
 			);
 			path = Artist;
+			sourceTree = "<group>";
+		};
+		86AC767F24FAB1FA009E59ED /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		86AC768024FAB1FA009E59ED /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				86348EAD24F334BD0073A4DE /* VerticalCollectionView.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
+		86AC768124FAB219009E59ED /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				863D0CF924F72E2C00D9855F /* SpotifyLoginButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		86AC768224FAB25E009E59ED /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				862737E524F19D78007553FA /* AppDelegate.swift */,
+				862737E724F19D78007553FA /* SceneDelegate.swift */,
+				862737F324F19D7B007553FA /* Info.plist */,
+				863D0CF524F727C900D9855F /* SpotifyMVVM-Bridge.h */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		86AC768324FAB2CF009E59ED /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				862737F024F19D7B007553FA /* LaunchScreen.storyboard */,
+				8627381C24F1A41E007553FA /* Base.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -782,7 +822,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
-				INFOPLIST_FILE = SpotifyMVVM/Info.plist;
+				INFOPLIST_FILE = "SpotifyMVVM/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -790,7 +830,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carlosladd.SpotifyMVVM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyMVVM/SpotifyMVVM-Bridge.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyMVVM/Supporting Files/SpotifyMVVM-Bridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -807,7 +847,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
-				INFOPLIST_FILE = SpotifyMVVM/Info.plist;
+				INFOPLIST_FILE = "SpotifyMVVM/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -815,7 +855,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carlosladd.SpotifyMVVM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyMVVM/SpotifyMVVM-Bridge.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyMVVM/Supporting Files/SpotifyMVVM-Bridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
