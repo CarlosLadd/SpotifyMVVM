@@ -17,3 +17,5 @@
 // MARK: - Login
 
 "loginButtonTitle" = "Login with Spotify";
+"loginSuccessButtonTitle" = "You are connected";
+"loginWaitingButtonTitle" = "Waiting for connection";

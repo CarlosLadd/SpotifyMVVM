@@ -8,14 +8,14 @@
 
 import UIKit
 
-class HomeTableViewCell : UITableViewCell {
+class HomeTableViewCell: UITableViewCell {
     
-    var parentViewController : UIViewController!
+    var parentViewController: UIViewController!
     
-    var homeGroup : HomeGroupModel? {
+    var homeGroup: HomeGroupModel? {
         didSet {
             // Fix safe area width
-            let ws: CGFloat = UIScreen.main.bounds.size.width
+            let wss: CGFloat = UIScreen.main.bounds.size.width
             var heightBox: CGFloat = 0.0
             
             groupNameLab.text = homeGroup?.groupName
@@ -26,19 +26,22 @@ class HomeTableViewCell : UITableViewCell {
                 collectionViewLayout.scrollDirection = .vertical
                 let countObjects = homeGroup?.objects.count ?? 0
                 heightBox = CGFloat(countObjects) * Static.margin64x
-            }
-            else if activeGroupType == .categories {
+                
+            } else if activeGroupType == .categories {
                 collectionViewLayout.scrollDirection = .horizontal
                 heightBox = Static.margin112x + Static.margin32x + Static.margin16x
-            }
-            else {
+                
+            } else {
                 heightBox = Static.margin112x + Static.margin24x * 2
             }
             
-            groupBox.frame = CGRect(x: 0, y: 0, width: ws, height: heightBox)
+            groupBox.frame = CGRect(x: 0, y: 0, width: wss, height: heightBox)
             groupNameLab.frame = CGRect(x: Static.margin16x, y: 0, width: groupBox.bounds.width - Static.margin32x, height: Static.margin32x)
             
-            collectionView.frame = CGRect(x: 0, y: groupNameLab.frame.origin.y + groupNameLab.bounds.height, width: groupBox.bounds.width, height: groupBox.bounds.height)
+            collectionView.frame = CGRect(x: 0,
+                                          y: groupNameLab.frame.origin.y + groupNameLab.bounds.height,
+                                          width: groupBox.bounds.width,
+                                          height: groupBox.bounds.height)
         }
     }
     
@@ -48,9 +51,9 @@ class HomeTableViewCell : UITableViewCell {
     // MARK: - UI
     
     private let groupBox: UIView = {
-        let vv = UIView()
-        vv.backgroundColor = .clear
-        return vv
+        let vvw = UIView()
+        vvw.backgroundColor = .clear
+        return vvw
     }()
     
     public let groupNameLab: UILabel = {
@@ -63,13 +66,13 @@ class HomeTableViewCell : UITableViewCell {
     // Collection View
     
     private let collectionViewLayout: UICollectionViewFlowLayout = {
-        let cv = UICollectionViewFlowLayout()
-        cv.sectionInset = UIEdgeInsets.zero
-        cv.minimumLineSpacing = 0
-        cv.minimumInteritemSpacing = 0
-        cv.scrollDirection = .horizontal
-        cv.estimatedItemSize = CGSize(width: 1, height: 1)
-        return cv
+        let cvv = UICollectionViewFlowLayout()
+        cvv.sectionInset = UIEdgeInsets.zero
+        cvv.minimumLineSpacing = 0
+        cvv.minimumInteritemSpacing = 0
+        cvv.scrollDirection = .horizontal
+        cvv.estimatedItemSize = CGSize(width: 1, height: 1)
+        return cvv
     }()
     
     public let collectionViewRowId: String = "homeGroupRowId"
@@ -85,7 +88,11 @@ class HomeTableViewCell : UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         // Collection View
-        collectionView = VerticalCollectionView(frame: CGRect(x: 0, y: groupNameLab.frame.origin.y + groupNameLab.bounds.height, width: groupBox.bounds.width, height: groupBox.bounds.height - groupNameLab.bounds.height), collectionViewLayout: collectionViewLayout)
+        collectionView = VerticalCollectionView(frame: CGRect(x: 0,
+                                                              y: groupNameLab.frame.origin.y + groupNameLab.bounds.height,
+                                                              width: groupBox.bounds.width,
+                                                              height: groupBox.bounds.height - groupNameLab.bounds.height),
+                                                              collectionViewLayout: collectionViewLayout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = false
@@ -112,7 +119,7 @@ class HomeTableViewCell : UITableViewCell {
 
 // MARK: - Collection View Delegate
 
-extension HomeTableViewCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -131,12 +138,12 @@ extension HomeTableViewCell : UICollectionViewDelegate, UICollectionViewDataSour
         if activeGroupType == .categories {
             let category = sourceArray?[indexPath.row] as! CategoryModel
             cell.category = category
-        }
-        else if activeGroupType == .trending {
+            
+        } else if activeGroupType == .trending {
             let trending = sourceArray?[indexPath.row] as! SongModel
             cell.trending = trending
-        }
-        else {
+            
+        } else {
             cell.originRect = CGSize(width: UIScreen.main.bounds.size.width, height: Static.margin64x)
             let recommended = sourceArray?[indexPath.row] as! SongModel
             cell.recommended = recommended
@@ -145,17 +152,19 @@ extension HomeTableViewCell : UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let ws: CGFloat = UIScreen.main.bounds.size.width
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let wss: CGFloat = UIScreen.main.bounds.size.width
         
         if activeGroupType == .categories {
             return CGSize(width: Static.margin112x + Static.margin16x, height: collectionView.frame.height)
-        }
-        else if activeGroupType == .trending {
+            
+        } else if activeGroupType == .trending {
             return CGSize(width: Static.margin112x + Static.margin16x, height: Static.margin112x + Static.margin24x * 2)
-        }
-        else {
-            return CGSize(width: ws - Static.margin16x, height: Static.margin64x)
+            
+        } else {
+            return CGSize(width: wss - Static.margin16x, height: Static.margin64x)
         }
     }
     

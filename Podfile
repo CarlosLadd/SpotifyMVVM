@@ -6,10 +6,11 @@ target 'SpotifyMVVM' do
   use_frameworks!
 
   # Pods for SpotifyMVVM
-  pod 'MaterialComponents/TextFields'
-  pod 'RealmSwift'
+  pod 'SwiftLint'
+  pod 'Swinject'
   pod 'Kingfisher'
   pod "SkeletonView"
+  pod 'IGListKit', '~> 4.0.0'
 
   target 'SpotifyMVVMTests' do
     inherit! :search_paths

@@ -8,14 +8,20 @@
 
 import UIKit
 
-class HomeCollectionViewCell : UICollectionViewCell {
+class HomeCollectionViewCell: UICollectionViewCell {
     
     var originRect: CGSize {
         didSet {
             coverBox.frame = CGRect(x: 0, y: 0, width: originRect.width, height: originRect.height)
             categoryTitle.frame = CGRect(x: 0, y: 0, width: coverBox.bounds.width, height: coverBox.bounds.height)
-            songTitle.frame = CGRect(x: 0, y: coverBox.frame.origin.y + coverBox.bounds.height, width: coverBox.bounds.width, height: Static.margin24x)
-            singerName.frame = CGRect(x: 0, y: songTitle.frame.origin.y + songTitle.bounds.height, width: coverBox.bounds.width, height: Static.margin24x)
+            songTitle.frame = CGRect(x: 0,
+                                     y: coverBox.frame.origin.y + coverBox.bounds.height,
+                                     width: coverBox.bounds.width,
+                                     height: Static.margin24x)
+            singerName.frame = CGRect(x: 0,
+                                      y: songTitle.frame.origin.y + songTitle.bounds.height,
+                                      width: coverBox.bounds.width,
+                                      height: Static.margin24x)
             
             songTitle.adjustsFontSizeToFitWidth = true
             songTitle.minimumScaleFactor = 0.5
@@ -45,8 +51,14 @@ class HomeCollectionViewCell : UICollectionViewCell {
     var recommended: SongModel? {
         didSet {
             coverBox.frame = CGRect(x: 0, y: (Static.margin64x / 2) - (Static.margin44x / 2), width: Static.margin44x, height: Static.margin44x)
-            songTitle.frame = CGRect(x: coverBox.frame.origin.x + coverBox.bounds.width + Static.margin16x, y: Static.margin10x, width: originRect.width - (coverBox.frame.origin.x + coverBox.bounds.width + Static.margin32x), height: Static.margin44x / 2)
-            singerName.frame = CGRect(x: songTitle.frame.origin.x, y: songTitle.frame.origin.y + songTitle.bounds.height, width: songTitle.bounds.width, height: songTitle.bounds.height)
+            songTitle.frame = CGRect(x: coverBox.frame.origin.x + coverBox.bounds.width + Static.margin16x,
+                                     y: Static.margin10x,
+                                     width: originRect.width - (coverBox.frame.origin.x + coverBox.bounds.width + Static.margin32x),
+                                     height: Static.margin44x / 2)
+            singerName.frame = CGRect(x: songTitle.frame.origin.x,
+                                      y: songTitle.frame.origin.y + songTitle.bounds.height,
+                                      width: songTitle.bounds.width,
+                                      height: songTitle.bounds.height)
             
             songTitle.text = recommended?.name
             singerName.text = recommended?.singer
@@ -59,11 +71,11 @@ class HomeCollectionViewCell : UICollectionViewCell {
     // MARK: - UI
     
     public let coverBox: UIView = {
-        let vv = UIView()
-        vv.backgroundColor = .lightGray
-        vv.layer.cornerRadius = 10.0
-        vv.layer.masksToBounds = true
-        return vv
+        let vvw = UIView()
+        vvw.backgroundColor = .lightGray
+        vvw.layer.cornerRadius = 10.0
+        vvw.layer.masksToBounds = true
+        return vvw
     }()
     
     public let categoryTitle: UILabel = {

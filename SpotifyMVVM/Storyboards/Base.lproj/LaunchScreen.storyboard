@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashViewController" id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="0mO-jc-hds" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="HXw-xd-KwS"/>
-                            <constraint firstItem="0mO-jc-hds" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="e2L-e9-eA7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0mO-jc-hds" secondAttribute="trailing" constant="100" id="uLR-Kk-LKP"/>
                             <constraint firstItem="0mO-jc-hds" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="100" id="yrP-FZ-WIh"/>
                         </constraints>

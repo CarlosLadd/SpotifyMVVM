@@ -19,14 +19,14 @@ extension UIFont {
     
     static func spFont(name: AssetFont, size: CGFloat) -> UIFont? {
         switch name {
-            case .light:
-                return UIFont(name: "SourceSansPro-Light", size: size)
-            case .regular:
-                return UIFont(name: "SourceSansPro-Regular", size: size)
-            case .semiBold:
-                return UIFont(name: "SourceSansPro-SemiBold", size: size)
-            case .bold:
-                return UIFont(name: "SourceSansPro-Bold", size: size)
+        case .light:
+            return UIFont(name: "SourceSansPro-Light", size: size)
+        case .regular:
+            return UIFont(name: "SourceSansPro-Regular", size: size)
+        case .semiBold:
+            return UIFont(name: "SourceSansPro-SemiBold", size: size)
+        case .bold:
+            return UIFont(name: "SourceSansPro-Bold", size: size)
         }
     }
     

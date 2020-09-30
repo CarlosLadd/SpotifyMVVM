@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseViewController : UIViewController {
+class BaseViewController: UIViewController {
     
     open var activeStatusBarStyle: UIStatusBarStyle = .lightContent
     

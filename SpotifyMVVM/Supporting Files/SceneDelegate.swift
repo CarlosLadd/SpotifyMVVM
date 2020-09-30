@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        navigationController.viewControllers = [loginViewController]
+        navigationController.viewControllers = [LoginBuilder.buildViewController()]
         
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
@@ -41,25 +41,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        let parameters = loginViewController.appRemote.authorizationParameters(from: url);
+        let parameters = Static.shared.appRemote.authorizationParameters(from: url)
 
-        if let access_token = parameters?[SPTAppRemoteAccessTokenKey] {
-            loginViewController.appRemote.connectionParameters.accessToken = access_token
-        }
-        else if let _ = parameters?[SPTAppRemoteErrorDescriptionKey] {
+        if let accessToken = parameters?[SPTAppRemoteAccessTokenKey] {
+            Static.shared.appRemote.connectionParameters.accessToken = accessToken
+            
+        } else if parameters?[SPTAppRemoteErrorDescriptionKey] != nil {
             // Show the error
         }
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        if let _ = loginViewController.appRemote.connectionParameters.accessToken {
-            loginViewController.appRemote.connect()
+        if Static.shared.appRemote.connectionParameters.accessToken != nil {
+            Static.shared.appRemote.connect()
         }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-        if (loginViewController.appRemote.isConnected) {
-            loginViewController.appRemote.disconnect()
+        if Static.shared.appRemote.isConnected {
+            Static.shared.appRemote.disconnect()
         }
     }
 
@@ -71,6 +71,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
     }
 
-
 }
-

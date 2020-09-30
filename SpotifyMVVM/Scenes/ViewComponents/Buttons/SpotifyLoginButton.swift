@@ -35,4 +35,23 @@ class SpotifyLoginButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Helpers
+    
+    func startLoading() {
+        let title = NSAttributedString(string: "", attributes: titleAttributes)
+        setAttributedTitle(title, for: .normal)
+        
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .white
+        activityIndicator.startAnimating()
+        
+        activityIndicator.frame = CGRect(x: (self.bounds.width / 2) - (Static.margin16x / 2),
+                                         y: (self.bounds.height / 2) - (Static.margin16x / 2),
+                                         width: Static.margin16x,
+                                         height: Static.margin16x)
+        
+        self.addSubview(activityIndicator)
+    }
 }

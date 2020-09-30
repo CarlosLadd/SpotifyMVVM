@@ -8,36 +8,15 @@
 
 import UIKit
 
-class LoginViewController : BaseViewController {
-    
-    // Spotify Configuration
-    lazy var configuration: SPTConfiguration = {
-        let configuration = SPTConfiguration(clientID: Static.SpotifyClientID, redirectURL: Static.SpotifyRedirectURI)
-        configuration.playURI = ""
-        configuration.tokenSwapURL = URL(string: Static.SpotifyBaseURLToken + "/v1/swap")
-        configuration.tokenRefreshURL = URL(string: Static.SpotifyBaseURLToken + "/v1/refresh")
-        return configuration
-    }()
-    
-    // Session Manager
-    lazy var sessionManager: SPTSessionManager = {
-        let manager = SPTSessionManager(configuration: configuration, delegate: self)
-        return manager
-    }()
-
-    // App Remote
-    lazy var appRemote: SPTAppRemote = {
-        let appRemote = SPTAppRemote(configuration: configuration, logLevel: .debug)
-        appRemote.delegate = self
-        return appRemote
-    }()
-    
-    // Player State
-    private var lastPlayerState: SPTAppRemotePlayerState?
+class LoginViewController: BaseViewController {
     
     // Login Button
     private lazy var connectButton = SpotifyLoginButton(title:
         NSLocalizedString("loginButtonTitle", comment: "").uppercased())
+    
+    // View Model
+    
+    var viewModel: LoginViewModelProtocol?
     
     // MARK: - Life Cycle
     
@@ -50,6 +29,49 @@ class LoginViewController : BaseViewController {
         
         // UI
         renderLoginButtonUI()
+        setupBindables()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // SP View State
+        Static.shared.spotifyViewStateDelegate = self
+        
+        // Only for test
+        Static.shared.sessionManager.alwaysShowAuthorizationDialog = true
+    }
+    
+    // MARK: - Reactive Behaviour
+    
+    private func setupBindables() {
+        viewModel?.startInitialConfiguration()
+        
+        viewModel?.didMessageSuccess = { [weak self] message in
+            guard let strongSelf = self else { return }
+            
+            DispatchQueue.main.async {
+                strongSelf.didMessageSuccess(message: message)
+            }
+        }
+        
+        viewModel?.didMessageError = { [weak self] error in
+            guard let strongSelf = self else { return }
+            
+            DispatchQueue.main.async {
+                strongSelf.didMessageError(error: error)
+            }
+        }
+    }
+    
+    // MARK: - ViewModel  Delegate
+    
+    private func didMessageSuccess(message: String) {
+        print("My message: \(message)")
+    }
+    
+    private func didMessageError(error: String) {
+        print("My error: \(error)")
     }
     
     // MARK: - UI
@@ -66,40 +88,28 @@ class LoginViewController : BaseViewController {
     
     // MARK: - Tap Actions
     
-    @objc private func didTapOnLoginButtonAction(_ sender: UIButton) {
+    @objc private func didTapOnLoginButtonAction(_ sender: SpotifyLoginButton) {
+        // Test Only
+        viewModel?.getLoginTest(message: "My app")
+        viewModel?.getLoginTest()
+        
+        sender.startLoading()
         let scope: SPTScope = [.appRemoteControl, .playlistReadPrivate, .userTopRead]
 
         if #available(iOS 11, *) {
-            sessionManager.initiateSession(with: scope, options: .clientOnly)
-        }
-        else {
-            sessionManager.initiateSession(with: scope, options: .clientOnly, presenting: self)
-        }
-    }
-    
-    // MARK: - UI State Handler
-    
-    private func updateViewOnBasedState() {
-        if (appRemote.isConnected) {
-            let titleValue = "You are connected".uppercased()
-            let title = NSAttributedString(string: titleValue, attributes: connectButton.titleAttributes)
+            Static.shared.sessionManager.initiateSession(with: scope, options: .clientOnly)
             
-            connectButton.setAttributedTitle(title, for: .normal)
-            updateLoginButtonWith(title: titleValue)
-        }
-        else {
-            let titleValue = "Waiting for connection".uppercased()
-            let title = NSAttributedString(string: titleValue, attributes: connectButton.titleAttributes)
-            
-            connectButton.setAttributedTitle(title, for: .normal)
-            updateLoginButtonWith(title: titleValue)
+        } else {
+            Static.shared.sessionManager.initiateSession(with: scope, options: .clientOnly, presenting: self)
         }
     }
     
     // MARK: - Private Helpers
     
     private func updateLoginButtonWith(title: String) {
-        let connectButtonWidth = Static.widthForViewLabel(text: title, font: connectButton.titleLabel!.font, height: connectButton.bounds.height) + (Static.margin32x * 3)
+        let connectButtonWidth = Static.widthForViewLabel(text: title,
+                                                          font: connectButton.titleLabel!.font,
+                                                          height: connectButton.bounds.height) + (Static.margin32x * 3)
         
         connectButton.frame.size.width = connectButtonWidth
         connectButton.frame.origin.x = (view.bounds.width / 2) - (connectButtonWidth / 2)
@@ -116,61 +126,55 @@ class LoginViewController : BaseViewController {
     
 }
 
-// MARK: - Session Manager Delegate
+// MARK: - Spotify View State Delegate
 
-extension LoginViewController : SPTSessionManagerDelegate {
+extension LoginViewController: SpotifyViewStateDelegate {
     
-    func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
-        presentAlertController(title: "Authorization Failed", message: error.localizedDescription, buttonTitle: "Dismiss")
+    // Session Manager
+    
+    func spotifySessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
+        Static.shared.spotifyAPIToken = session.accessToken
+        
+        DispatchQueue.main.async {
+            let homeVC = HomeBuilder.buildViewController()
+            NavigationHandler.shared.checkAfterPushViewController(vcl: homeVC, classOf: HomeViewController.self, weakSelf: self)
+        }
     }
-
-    func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
+    
+    func spotifySessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
         presentAlertController(title: "Session Renewed", message: session.description, buttonTitle: "Sweet")
     }
-
-    func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
-        appRemote.connectionParameters.accessToken = session.accessToken
-        appRemote.connect()
+    
+    func spotifySessionManager(manager: SPTSessionManager, didFailWith error: Error) {
+        presentAlertController(title: "Authorization Failed", message: error.localizedDescription, buttonTitle: "Dismiss")
     }
     
-}
-
-// MARK: - Remote Delegate
-
-extension LoginViewController : SPTAppRemoteDelegate {
+    // Player State
     
-    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-        updateViewOnBasedState()
+    func update(playerState: SPTAppRemotePlayerState) {
+        // Code
+    }
+    
+    // App Remote
+    
+    func spotifyAppRemoteDidConnected() {
+        let titleValue = NSLocalizedString("loginSuccessButtonTitle", comment: "").uppercased()
+        let title = NSAttributedString(string: titleValue, attributes: connectButton.titleAttributes)
         
-        appRemote.playerAPI?.delegate = self
-        appRemote.playerAPI?.subscribe(toPlayerState: { (success, error) in
-            if let error = error {
-                print("Error subscribing to player state:" + error.localizedDescription)
-            }
-        })
+        DispatchQueue.main.async {
+            self.connectButton.setAttributedTitle(title, for: .normal)
+            self.updateLoginButtonWith(title: titleValue)
+        }
+    }
+    
+    func spotifyAppRemoteDidOffline() {
+        let titleValue = NSLocalizedString("loginWaitingButtonTitle", comment: "").uppercased()
+        let title = NSAttributedString(string: titleValue, attributes: connectButton.titleAttributes)
         
-        // FIXME: Rendering Global Player
-        // fetchPlayerState()
-    }
-
-    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-        updateViewOnBasedState()
-        lastPlayerState = nil
-    }
-
-    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-        updateViewOnBasedState()
-        lastPlayerState = nil
-    }
-    
-}
-
-// MARK: - Remote Player State Delegate
-
-extension LoginViewController : SPTAppRemotePlayerStateDelegate {
-    
-    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-        // update(playerState: playerState)
+        DispatchQueue.main.async {
+            self.connectButton.setAttributedTitle(title, for: .normal)
+            self.updateLoginButtonWith(title: titleValue)
+        }
     }
     
 }

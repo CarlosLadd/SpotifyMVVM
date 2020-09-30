@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ArtistProfileViewController : BaseViewController {
+class ArtistProfileViewController: BaseViewController {
     
     // Header View
     private var headerView: UIView = {
-        let vv = UIView()
-        vv.backgroundColor = .darkPrimary
-        return vv
+        let vvw = UIView()
+        vvw.backgroundColor = .darkPrimary
+        return vvw
     }()
     
     // Home List
@@ -49,7 +49,10 @@ class ArtistProfileViewController : BaseViewController {
         let navTopBar =  UIView(frame: CGRect(x: 0, y: Static.hasTopNotch(), width: self.view.bounds.width, height: Static.margin44x))
         navTopBar.backgroundColor = .clear
         
-        let backIcon = UIImageView(frame: CGRect(x: Static.margin16x, y: (navTopBar.bounds.height / 2) - (Static.margin24x / 2), width: Static.margin24x, height: Static.margin24x))
+        let backIcon = UIImageView(frame: CGRect(x: Static.margin16x,
+                                                 y: (navTopBar.bounds.height / 2) - (Static.margin24x / 2),
+                                                 width: Static.margin24x,
+                                                 height: Static.margin24x))
         backIcon.image = #imageLiteral(resourceName: "icon-back")
         backIcon.image = backIcon.image?.withRenderingMode(.alwaysTemplate)
         backIcon.tintColor = .white
@@ -76,14 +79,20 @@ class ArtistProfileViewController : BaseViewController {
         headerTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         // Artist Name
-        let artistNameLab = UILabel(frame: CGRect(x: Static.margin16x, y: Static.margin16x, width: self.view.bounds.width - Static.margin32x, height: Static.margin44x))
+        let artistNameLab = UILabel(frame: CGRect(x: Static.margin16x,
+                                                  y: Static.margin16x,
+                                                  width: self.view.bounds.width - Static.margin32x,
+                                                  height: Static.margin44x))
         artistNameLab.font = UIFont.spFont(name: .bold, size: 25)
         artistNameLab.textColor = .darkPrimary
         
         // Only for test
         artistNameLab.text = "The Chainsmokers"
         
-        let songCover = UIView(frame: CGRect(x: artistNameLab.frame.origin.x, y: artistNameLab.frame.origin.y + artistNameLab.bounds.height + Static.margin10x, width: Static.margin80x, height: Static.margin80x))
+        let songCover = UIView(frame: CGRect(x: artistNameLab.frame.origin.x,
+                                             y: artistNameLab.frame.origin.y + artistNameLab.bounds.height + Static.margin10x,
+                                             width: Static.margin80x,
+                                             height: Static.margin80x))
         songCover.backgroundColor = .lightGray
         songCover.layer.cornerRadius = 5.0
         
@@ -92,9 +101,12 @@ class ArtistProfileViewController : BaseViewController {
         headerTableView.addSubview(artistNameLab)
         headerTableView.addSubview(songCover)
         
-        /// TableView
-        
-        profileTableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height), style: .plain)
+        // TableView
+        profileTableView = UITableView(frame: CGRect(x: 0,
+                                                     y: 0,
+                                                     width: self.view.frame.size.width,
+                                                     height: self.view.frame.size.height),
+                                                     style: .plain)
         profileTableView.backgroundView?.backgroundColor = .clear
         profileTableView.backgroundColor = .clear
         profileTableView.allowsMultipleSelection = false
@@ -129,7 +141,7 @@ class ArtistProfileViewController : BaseViewController {
 
 // MARK: - Home TableView Delegate
 
-extension ArtistProfileViewController : UITableViewDelegate, UITableViewDataSource {
+extension ArtistProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44.0
@@ -146,30 +158,28 @@ extension ArtistProfileViewController : UITableViewDelegate, UITableViewDataSour
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offset_HeaderStop = headerView.bounds.height - Static.hasTopNotch() - Static.margin24x
+        let offsetHeaderStop = headerView.bounds.height - Static.hasTopNotch() - Static.margin24x
         let totalOffset = scrollView.contentOffset.y + headerView.bounds.height - Static.margin24x
         
         // Scale and Translate.
         var headerTransform = CATransform3DIdentity
         
         if totalOffset < 0 {
-            let headerScaleFactor:CGFloat = -(totalOffset) / headerView.bounds.height
+            let headerScaleFactor: CGFloat = -(totalOffset) / headerView.bounds.height
             
             let headerSizevariation = ((headerView.bounds.height * (1.0 + headerScaleFactor)) - headerView.bounds.height) / 2
             headerTransform = CATransform3DTranslate(headerTransform, 0, headerSizevariation, 0)
             headerTransform = CATransform3DScale(headerTransform, 1.0 + headerScaleFactor, 1.0 + headerScaleFactor, 0)
-        }
-        else {
-            headerTransform = CATransform3DTranslate(headerTransform, 0, max(-offset_HeaderStop, -totalOffset), 0)
+        } else {
+            headerTransform = CATransform3DTranslate(headerTransform, 0, max(-offsetHeaderStop, -totalOffset), 0)
         }
         
-        let transparencyValue: CGFloat = 1 - (totalOffset / offset_HeaderStop);
-        let solidValue: CGFloat = totalOffset / offset_HeaderStop;
+        let transparencyValue: CGFloat = 1 - (totalOffset / offsetHeaderStop)
+        let solidValue: CGFloat = totalOffset / offsetHeaderStop
         
         if solidValue >= 1.0 {
             activeStatusBarStyle = .default
-        }
-        else {
+        } else {
             activeStatusBarStyle = .lightContent
         }
         
